@@ -50,7 +50,7 @@ config = {
   applicationName: "my_custom_app"
 };
 // alternatively
-config = "postgres://user@localhost:5432/test?application_name=my_custom_app";
+config = "postgres://user@localhost:5432/test?applicationName=my_custom_app";
 
 const client = new Client(config);
 await client.connect();

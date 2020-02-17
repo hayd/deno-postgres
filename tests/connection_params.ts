@@ -1,6 +1,6 @@
 const { test } = Deno;
 import { assertEquals, assertThrows } from "../test_deps.ts";
-import { createParams } from "../connection_params.ts";
+import { ConnectionParams, createParams } from "../connection_params.ts";
 
 function withEnv(obj: Record<string, string>, fn: () => void) {
   return () => {
@@ -172,4 +172,17 @@ test("requiredParameters", function () {
   );
 
   assertEquals(error.name, "ConnectionParamsError");
+});
+
+test("certParameters", async function () {
+  const certFile = (await Deno.readFile("./tests/cert/RootCA.crt")).toString();
+  const p: ConnectionParams = {
+    port: 1010,
+    hostname: "some_host",
+    database: "deno_postgres",
+    user: "deno_postgres",
+    certFile: certFile,
+    applicationName: "deno_postgres",
+  };
+  assertEquals(p.certFile, certFile);
 });

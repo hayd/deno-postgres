@@ -45,6 +45,7 @@ export interface ConnectionParams {
   user: string;
   password?: string;
   applicationName: string;
+  certFile?: string;
   // TODO: support other params
 }
 

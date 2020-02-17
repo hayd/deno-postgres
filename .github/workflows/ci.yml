@@ -32,5 +32,6 @@ jobs:
       - name: Check formatting
         run: deno fmt --check
 
-      - name: Run tests
-        run: deno test --allow-net --allow-env test.ts
+      - name: run tests
+        run: deno run -r --allow-net --allow-env --allow-read test.ts
+
